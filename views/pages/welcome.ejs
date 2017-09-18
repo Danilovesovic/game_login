@@ -1,0 +1,23 @@
+<% include ../partials/head.ejs %>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <a href="" class="navbar-brand">IconsMatch</a>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href=""><%= user %></a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <h2 class="page-header" style="text-transform: uppercase">Welcome <%= user%></h2>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h3>Rules are simple BE THE BEST</h3><br>
+                    <a href="/game" class="btn btn-success form-control">Start the Game</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

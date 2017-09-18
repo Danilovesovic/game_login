@@ -1,0 +1,20 @@
+<% include ../partials/head.ejs %>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <a href="" class="navbar-brand">IconsMatch</a>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/login">Login</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-4">
+            <form action="/login" method="post">
+                <input type="text" name="username" class="form-control" placeholder="choose username"><br>
+                <input type="password" name="password" class="form-control" placeholder="choose password"><br>
+                <input type="submit" name="sub" class="form-control btn btn-info" value="Register">
+            </form>
+        </div>
+    </div>
+</div>

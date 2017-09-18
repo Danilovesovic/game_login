@@ -1,0 +1,16 @@
+<% include ../partials/head.ejs %>
+<body>
+<% include ../partials/navbar.ejs %>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-4">
+            <form action="/login" method="post">
+                <input type="text" name="username" class="form-control" placeholder="username"><br>
+                <input type="password" name="password" class="form-control" placeholder="password"><br>
+                <input type="submit" name="sub" class="form-control btn btn-primary" value="Login">
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

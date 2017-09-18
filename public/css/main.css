@@ -1,0 +1,158 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.container {
+	width: 250px;
+	height: 500px;
+	margin: 100px auto;
+	box-shadow: 0 0 5px;
+	position: relative;
+	/*overflow: hidden;*/
+}
+.infoHolder {
+	width: 250px;
+	height: 500px;
+	position: relative;
+	margin: -1100px auto;
+	text-align: center;
+	line-height: 500px;
+	background-color: skyblue;
+}
+.reloadHolder {
+	width: 20px;
+    height: 548px;
+    /* margin-top: 100px; */
+    position: absolute;
+    top: 0;
+    left: 50%;
+    top: 82px;
+    transform: translateX(-220px);
+    text-align: center;
+    line-height: 50px;
+    border-radius: 10px;
+    border: 2px solid darkcyan;
+    border-right: none;
+    overflow: hidden;
+}
+.procent {
+	width: 20px;
+	
+	 background-color: darkslategray;
+	 border-radius: 10px;
+	 position: absolute;
+	 bottom: 0;
+}
+
+.displayDiv {
+	 width: 70px;
+    height: 548px;
+    /* margin-top: 100px; */
+    background-color: darkslategray;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    top: 82px;
+    transform: translateX(-195px);
+    text-align: center;
+    line-height: 50px;
+    border-radius: 10px;
+    border: 2px solid darkcyan;
+    border-right: none;
+}
+.iconHolder {
+	height: 50px;
+	width: 70px;
+	background-color: azure;
+	border-bottom: 1px solid #ddd;
+	padding-top: 10px;
+	position: relative;
+}
+.iconHolder > img {
+	width: 40px;
+	height: 40px;
+}
+.box > img {
+	width: 32px;
+	height: 32px;
+}
+.badge {
+	position: absolute;
+    right: 5px;
+    bottom: 5px;
+    color: hsl(0, 0%, 100%);
+    display: block;
+    width: 25px;
+    height: 25px;
+    background-color: hsl(9, 100%, 64%);
+    border-radius: 50%;
+    line-height: 25px;
+    text-align: center;
+    border: 1px solid darkcyan;
+}
+#start {
+	    background: hsl(90, 100%, 50%);
+    width: 200px;
+    height: 40px;
+    border: 2px solid hsl(60, 56%, 91%);
+    border-radius: 7px;
+}
+.col {
+	width: 50px;
+	box-sizing: border-box;
+	height: 500px;
+	float: left;
+	border: 1px solid #ddd;
+	position: absolute;
+	top: 0px;
+}
+.col:nth-child(2){
+left: 50px;
+}
+.col:nth-child(3){
+left: 100px;
+}
+.col:nth-child(4){
+left: 150px;
+}
+.col:nth-child(5){
+left: 200px;
+}
+.box {
+	width: 50px;
+	height: 50px;
+	box-sizing: border-box;
+	border: 1px solid #eee;
+	/*background-color: azure;*/
+	text-align: center;
+	line-height: 50px;
+	float: left;
+	position: absolute;
+	background-color: cadetblue;
+	padding: 7px;
+}
+.selected {
+	background-color: 	#E0FFFF;
+}
+#reload {
+    width: 250px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 8px;
+    /* margin: 0 auto; */
+    display: block;
+    position: absolute;
+    top: 500px;
+    left: 50%;
+    transform: translateX(-125px);
+    border: none;
+    font-size: 23px;
+    text-shadow: 0 0 3px;
+    outline: none;
+};
+.active-reload {
+    background-color: aquamarine;
+    color: blueviolet;
+
+} // pitati Cvejica zasto nece
