@@ -3,13 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Juwlery</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+<link rel="manifest" href="images/manifest.json">
+<meta name="theme-color" content="#ffffff ">
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
+    <div class="navbar">
+        <ul>
+            <li><a href="/game">New Game</a></li>
+            <li>New game</li>
+        </ul>
+    </div>
 <div class="reloadHolder">
     <div class="procent"></div>
 </div>
+<div class="container-holder">
 <div class="container">
     <div class="col"></div>
     <div class="col"></div>
@@ -17,6 +29,14 @@
     <div class="col"></div>
     <div class="col"></div>
     <button id="reload">Reload</button>
+</div>
+<div class="player-status">
+    <ul class="allPlayers">
+       <% for(var i=0;i<docs.length;i++){ %>
+        <li><%= docs[i].username %> <%= docs[i].points %>pt </li>
+    <%  } %>
+    </ul>
+</div>
 </div>
 
 <div class="infoHolder">

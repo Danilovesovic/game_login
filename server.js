@@ -45,6 +45,15 @@ app.post('/login',function (req,res) {
         }
     })
 });
+app.post('/saveUser',function (req,res) {
+    var username = req.body.username;
+    var password = req.body.password;
+    db.users.insert({username:username,password:password},function (err,docs) {
+        if(err) res.redirect('/errorPage');
+        session.uniqueUser = username;
+        res.redirect('/welcome');
+    })
+})
 app.get('/logout',function (req,res) {
     req.session.destroy();
     res.redirect('/login');
@@ -61,7 +70,13 @@ app.get('/welcome',function (req,res) {
    })
 });
 app.get('/game',function (req,res) {
-    res.render('pages/game');
+    db.users.find({},function (err,docs) {
+        if(err) throw err;
+        console.log(docs);;
+        res.render('pages/game',{
+            docs : docs
+        });
+    })
 });
 app.listen(3000,function () {
     console.log("Listening on port 3000");

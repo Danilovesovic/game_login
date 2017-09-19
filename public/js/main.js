@@ -1,6 +1,5 @@
 // dinamican array slika ..............................................................
 var allImages = ['facebook', 'google-plus', 'pinterest', 'instagram', 'deviantart', 'flickr', 'swarm', 'tumblr', 'soundcloud'];
-// var magicArray = ['facebook', 'google-plus', 'pinterest', 'instagram', 'deviantart', 'flickr', 'swarm', 'tumblr', 'swarm'];
 if (localStorage.level) {
     var level = parseInt(localStorage.level);
     console.log(level);
@@ -36,6 +35,9 @@ var soundCounter;
 var progressHeight = 0;
 if (localStorage.canReload) {
     var canReload = localStorage.canReload;
+    if(canReload == "true"){
+        reloadBtn.addClass('active-reload');
+    }
 } else {
     var canReload = false;
 };
@@ -44,6 +46,8 @@ setProgressBar();
 reloadBtn.on('click', shuffleIcons);
 
 function setProgressBar() {
+    // ovde cu i da ostavim klasu reloadu ako je true u localSto......
+
     if (localStorage.progress) {
         progressHeight = parseInt(localStorage.progress);
     } else {
@@ -291,6 +295,11 @@ function updateCounters(selected) {
     progressHeight += points;
     console.log(progressHeight);
     if (progressHeight > 548) {
+        progressHeight = 0;
+         progress.animate({
+        height: 0
+    }, 300)
+         localStorage.progress = 0;
         enableReloadBtn();
     };
 
@@ -405,16 +414,17 @@ function setGoalByLevel(level) {
 }
 
 function enableReloadBtn() {
-    reloadBtn.css({
-        color: 'blueviolet',
-        background: 'aquamarine'
-    });
+    reloadBtn.addClass('active-reload');
     localStorage.canReload = true;
 }
 
 function shuffleIcons() {
-    if (canReload) {
-        console.log("Reload stranice");
+    if (canReload == 'true') {
+        reloadBtn.removeClass('active-reload');
+        localStorage.canReload = false;
+        $('.box').remove();
+        createBoxes();
+        $('.box').on('click', checkSiblings);
     };
 
 }
