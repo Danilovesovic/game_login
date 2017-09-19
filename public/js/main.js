@@ -7,6 +7,7 @@ if (localStorage.level) {
     var level = 1;
 }
 setGoalByLevel(level);
+var totalPoints = 0;
 var reloadBtn = $('#reload');
 var progress = $('.procent');
 var metch = $('#metch')[0];
@@ -35,7 +36,7 @@ var soundCounter;
 var progressHeight = 0;
 if (localStorage.canReload) {
     var canReload = localStorage.canReload;
-    if(canReload == "true"){
+    if (canReload == "true") {
         reloadBtn.addClass('active-reload');
     }
 } else {
@@ -268,24 +269,37 @@ function updateCounters(selected) {
     var points = 0;
     if (selected.length == 2) {
         points = 2;
+        totalPoints += points;
     };
     if (selected.length == 3) {
         points = 3;
+        totalPoints += points;
+
     };
     if (selected.length == 4) {
-        points = 5
+        points = 5;
+        totalPoints += points;
+
     }
     if (selected.length == 5) {
         points = 7;
+        totalPoints += points;
+
     }
     if (selected.length == 6) {
         points = 10;
+        totalPoints += points;
+
     }
     if (selected.length == 7) {
         points = 12;
+        totalPoints += points;
+
     }
     if (selected.length > 7) {
         points = selected.length * 2;
+        totalPoints += points;
+
     }
     //update progress bar
 
@@ -293,13 +307,13 @@ function updateCounters(selected) {
         height: '+=' + points
     }, 300)
     progressHeight += points;
-    console.log(progressHeight);
+    // console.log(progressHeight);
     if (progressHeight > 548) {
         progressHeight = 0;
-         progress.animate({
-        height: 0
-    }, 300)
-         localStorage.progress = 0;
+        progress.animate({
+            height: 0
+        }, 300)
+        localStorage.progress = 0;
         enableReloadBtn();
     };
 
@@ -396,8 +410,27 @@ function magicChange(image) {
 }
 
 function startLevel(level) {
+    var pointsForDb = totalPoints;
+    console.log(pointsForDb);
+    totalPoints = 0;
     localStorage.level = level++;;
     localStorage.progress = progressHeight;
+    $.ajax({
+            url: '/savePoints',
+            type: 'post',
+            dataType: 'json',
+            data: {
+                points: pointsForDb
+            }
+        })
+        .done(function(res) {
+            console.log(res);
+        })
+        .fail(function() {
+            console.log("error");
+        })
+
+
     location.reload();
 }
 
@@ -419,8 +452,10 @@ function enableReloadBtn() {
 }
 
 function shuffleIcons() {
+    console.log(canReload);
     if (canReload == 'true') {
         reloadBtn.removeClass('active-reload');
+        canReload = "false";
         localStorage.canReload = false;
         $('.box').remove();
         createBoxes();
