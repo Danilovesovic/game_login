@@ -21,10 +21,10 @@ app.use(session({
 app.use(express.static(__dirname + '/public'));
 app.get('/', function(req, res) {
     
-    if (session.uniqueUser) {
+    if (req.session.uniqueUser) {
         res.render('pages/welcome', {
             title: "Welcome",
-            user: session.uniqueUser
+            user: req.session.uniqueUser
         })
     } else {
         res.render('pages/loginForm', {
@@ -47,8 +47,8 @@ app.post('/login', function(req, res) {
 
         if (err) throw err;
         if (docs) {
-            session.uniqueUser = username;
-            session.userId = docs._id;
+            req.session.uniqueUser = username;
+            req.session.userId = docs._id;
             res.redirect('/welcome');
         } else {
             res.redirect('/login');
@@ -66,8 +66,8 @@ app.post('/saveUser', function(req, res) {
     }, function(err, docs) {
 
         if (err) res.redirect('/errorPage');
-        session.uniqueUser = username;
-        session.userId = docs._id;
+        req.session.uniqueUser = username;
+        req.session.userId = docs._id;
         res.redirect('/welcome');
     })
 })
@@ -83,11 +83,11 @@ app.get('/register', function(req, res) {
 app.get('/welcome', function(req, res) {
     res.render('pages/welcome', {
         title: "Welcome Page",
-        user: session.uniqueUser
+        user: req.session.uniqueUser
     })
 });
 app.get('/game', function(req, res) {
-    console.log(session.userId);
+    console.log(req.session.userId);
     db.users.find({}, function(err, docs) {
         if (err) throw err;
         res.render('pages/game', {
@@ -98,14 +98,14 @@ app.get('/game', function(req, res) {
 app.post("/savePoints", function(req, res) {
     var points = parseInt(req.body.points);
     console.log(points);
-    console.log(objId(session.userId));
+    console.log(objId(req.session.userId));
     db.users.find({
-        _id: objId(session.userId)
+        _id: objId(req.session.userId)
     }, function(err, user) {
         console.log(user);
     })
     db.users.update({
-        _id: objId(session.userId)
+        _id: objId(req.session.userId)
     }, {
         $inc: {
             points: +points
