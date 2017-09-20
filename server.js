@@ -1,11 +1,11 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const mongojs = require('mongojs');
-const db = mongojs('danilovaDB', ['users']);
-const session = require('express-session');
-const objId = mongojs.ObjectId;
+var express = require('express');
+var bodyParser = require('body-parser');
+var mongojs = require('mongojs');
+var db = mongojs('danilovaDB', ['users']);
+var session = require('express-session');
+var objId = mongojs.ObjectId;
 
-const app = express();
+var app = express();
 app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -35,8 +35,8 @@ app.get('/login', function(req, res) {
     });
 });
 app.post('/login', function(req, res) {
-    let username = req.body.username;
-    let password = req.body.password;
+    var username = req.body.username;
+    var password = req.body.password;
     db.users.findOne({
         username: username,
         password: password
