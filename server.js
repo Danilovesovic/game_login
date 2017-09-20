@@ -113,8 +113,7 @@ app.post("/savePoints", function(req, res) {
         res.send("Updated");
     });
 })
-var port = process.env.port || 3000;
-console.log(port);
-app.listen(port, function() {
+
+app.listen(80, function() {
     console.log("Listening on port 3000");
 });
