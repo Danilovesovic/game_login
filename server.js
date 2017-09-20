@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 var mongojs = require('mongojs');
 var db = mongojs('danilovaDB', ['users']);
 var session = require('express-session');
@@ -11,6 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: false
 }));
+app.use(cookieParser());
 app.use(session({
     secret: "myapp",
     resave: false,
@@ -18,6 +20,7 @@ app.use(session({
 }));
 app.use(express.static(__dirname + '/public'));
 app.get('/', function(req, res) {
+    
     if (session.uniqueUser) {
         res.render('pages/welcome', {
             title: "Welcome",

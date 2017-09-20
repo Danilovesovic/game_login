@@ -40,7 +40,7 @@ if (localStorage.canReload) {
         reloadBtn.addClass('active-reload');
     }
 } else {
-    var canReload = false;
+    var canReload ="false";
 };
 setAllSpans();
 setProgressBar();
@@ -453,13 +453,13 @@ function enableReloadBtn() {
 
 function shuffleIcons() {
     console.log(canReload);
-    // if (canReload == 'true') {
+    if (canReload == 'true') {
         reloadBtn.removeClass('active-reload');
         canReload = "false";
         localStorage.canReload = false;
         $('.box').remove();
         createBoxes();
         $('.box').on('click', checkSiblings);
-    // };
+    };
 
 }
