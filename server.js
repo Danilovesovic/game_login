@@ -13,8 +13,8 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(session({
     secret: "myapp",
-    resave: true,
-    saveUninitialized: true
+    resave: false,
+    saveUninitialized: false
 }));
 app.use(express.static(__dirname + '/public'));
 app.get('/', function(req, res) {
