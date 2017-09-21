@@ -103,12 +103,12 @@ app.get('/game', function(req, res) {
 });
 app.post("/savePoints", function(req, res) {
     var points = parseInt(req.body.points);
-    console.log(points);
+    
     console.log(objId(req.session.userId));
     db.users.find({
         _id: objId(req.session.userId)
     }, function(err, user) {
-        console.log(user);
+        
     })
     db.users.update({
         _id: objId(req.session.userId)
@@ -118,7 +118,7 @@ app.post("/savePoints", function(req, res) {
         }
     }, function(err, docs) {
         if (err) throw err;
-        console.log(docs);
+       
         res.send("Updated");
     });
 })

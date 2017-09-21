@@ -113,6 +113,7 @@ function createBoxes() { // kreiramo ikonice
 }
 
 function checkSiblings() {
+
     var self = $(this);
 
     var thisIndex = self.index(); // index el na kog smo kliknuli
@@ -156,7 +157,7 @@ function checkSiblings() {
     console.clear()
 
     expandSearch(startingMathes)
-    console.log(startingMathes);
+    
 }
 
 function expandSearch(startingMathes) {
@@ -254,6 +255,7 @@ function slideNewOnes() {
     } else {
         selected.removeClass('selected');
     }
+   
 }
 
 function matchImages(el, img) {
@@ -448,7 +450,8 @@ function setGoalByLevel(level) {
 
 function enableReloadBtn() {
     reloadBtn.addClass('active-reload');
-    localStorage.canReload = true;
+    localStorage.canReload = "true";
+    canReload = "true";
 }
 
 function shuffleIcons() {
@@ -456,7 +459,7 @@ function shuffleIcons() {
     if (canReload == 'true') {
         reloadBtn.removeClass('active-reload');
         canReload = "false";
-        localStorage.canReload = false;
+        localStorage.canReload = "false";
         $('.box').remove();
         createBoxes();
         $('.box').on('click', checkSiblings);
