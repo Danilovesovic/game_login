@@ -15,8 +15,8 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(session({
     secret: "myapp",
-    resave: false,
-    saveUninitialized: false
+    resave: false, // probati bolje sa true
+    saveUninitialized: false // i ovo true
 }));
 app.use(express.static(__dirname + '/public'));
 app.get('/', function(req, res) {
@@ -82,16 +82,22 @@ app.get('/register', function(req, res) {
 });
 app.get('/welcome', function(req, res) {
     res.render('pages/welcome', {
-        title: "Welcome Page",
+        title: "Welcome Page", 
         user: req.session.uniqueUser
+        
     })
 });
 app.get('/game', function(req, res) {
     console.log(req.session.userId);
     db.users.find({}, function(err, docs) {
         if (err) throw err;
+        console.log(docs);
+        var sortDocs = docs.sort(function (a,b) {
+            return b.points - a.points;
+        })
+        console.log(sortDocs);
         res.render('pages/game', {
-            docs: docs
+            docs: sortDocs
         });
     })
 });
