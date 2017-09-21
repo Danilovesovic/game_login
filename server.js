@@ -49,6 +49,7 @@ app.post('/login', function(req, res) {
         if (docs) {
             req.session.uniqueUser = username;
             req.session.userId = docs._id;
+            console.log(req.session.userId);
             res.redirect('/welcome');
         } else {
             res.redirect('/login');
