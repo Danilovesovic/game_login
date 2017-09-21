@@ -15,8 +15,8 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(session({
     secret: "myapp",
-    resave: false, // probati bolje sa true
-    saveUninitialized: false // i ovo true
+    resave: true, // probati bolje sa true
+    saveUninitialized: true // i ovo true
 }));
 app.use(express.static(__dirname + '/public'));
 app.get('/', function(req, res) {
